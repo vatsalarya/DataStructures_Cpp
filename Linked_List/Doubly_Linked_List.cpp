@@ -23,14 +23,20 @@ void insertAtHead(int x){
 }
 void Insert(int x,int n=1){
     Node *newNode = GetNewNode(x);
+    
     if(n==1){
+        if(head==nullptr){
+        newNode->next = head;
+        head=newNode;
+        return;
+        }
         head->prev = newNode;
         newNode->next = head;
         head=newNode;
         return;
     }
     Node *temp = head;
-    for(int i=0; i<n-2; i++)
+    for(int i=0; i<n-1; i++)
         temp = temp->next;
     newNode->next = temp->next;
     temp->next->prev = newNode; 
