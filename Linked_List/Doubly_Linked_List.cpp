@@ -26,7 +26,6 @@ void Insert(int x,int n=1){
     
     if(n==1){
         if(head==nullptr){
-        newNode->next = head;
         head=newNode;
         return;
         }
