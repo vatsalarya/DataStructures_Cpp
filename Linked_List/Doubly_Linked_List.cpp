@@ -25,22 +25,20 @@ void Insert(int x,int n=1){
     Node *newNode = GetNewNode(x);
     
     if(n==1){
-        if(head==nullptr){
-        head=newNode;
-        return;
-        }
-        head->prev = newNode;
+        if(head!=nullptr)
+            head->prev = newNode;
         newNode->next = head;
         head=newNode;
         return;
     }
     Node *temp = head;
-    for(int i=0; i<n-1; i++)
+    for(int i=0; i<n-2; i++)
         temp = temp->next;
     newNode->next = temp->next;
+        newNode->prev = temp;
+    if(temp->next != nullptr)
     temp->next->prev = newNode; 
     temp->next = newNode;
-    newNode->prev = temp;
 }
 
 void print(Node *p=head){
@@ -51,9 +49,9 @@ void print(Node *p=head){
 
 int main(){
     Insert(1,1);
-    print();
+    print();cout<<endl;
     Insert(2,2);
-    print();
+    print();cout<<endl;
     Insert(33);
-    print();
+    print();cout<<endl;
 }
